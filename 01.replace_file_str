@@ -1,0 +1,3 @@
+# Replace file str
+# Unlike Ubuntu, OS X requires the extension to be explicitly specified. The workaround is to set an empty string: ''
+sed -i '' 's/SS200000144TL-E1/SS200000144TL_E1/g' `grep SS200000144TL-E1 -rl /Users/lily/Documents/02.My_projects/01.tomato/04.Data/02.SC/20211213/SS200000144TL_E1_BAK`
