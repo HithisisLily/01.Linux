@@ -1,0 +1,26 @@
+有时候我们在Linux命令行执行某个命令时，会报命令找不到的错误，这个错误出现的原因是，在执行命令时，系统会从系统环境变量中去寻找，如果找到了就执行，没找都就会报命令未找到。下面我们拿Linux下执行mysql mysqladmin时，报 command not found为例讲解一下解决办法吧。 
+查看一下系统目前的环境变量
+
+mysql程序安装好后，直接执行mysql或mysqladmin时，系统首先会去/usr/bin下寻找命令，如果不在这个目录中，当然就会找不到了。这个时候我们就需要为这些找不到的命令建立一个链接文件，链接到/usr/bin下。 
+首先我们查看一下环境变量中是否存在这个命令，操作如下：
+
+[root@admin bin]# which mysqladmin 
+或
+[root@admin bin]# where is mysqladmin
+1
+2
+3
+4
+如果环境变量中存在该命令，就会输出存在的具体路径,如果不存在就会提示命令未找到.
+
+做链接前，我们必须的知道这个命令所在的完整路径，比如mysqladmin 
+查找一下这个命令的完整路径：
+
+[root@admin bin]# find / -name mysqladmin
+1
+
+结果可以看出，有两个地方存在mysqladmin，第一个我们不用管他，那是他的原始路径。接下来需要做的是把下面的路径直接链接到/usr/bin下。操作如下：
+
+[root@admin bin]# ln -s /usr/local/mysql/bin/mysqladmin /usr/bin
+1
+链接成功以后，再次执行一下这个命令就ok了。
