@@ -24,3 +24,5 @@ mysql程序安装好后，直接执行mysql或mysqladmin时，系统首先会去
 [root@admin bin]# ln -s /usr/local/mysql/bin/mysqladmin /usr/bin
 1
 链接成功以后，再次执行一下这个命令就ok了。
+
+source：https://www.cnblogs.com/mnote/p/8832806.html
